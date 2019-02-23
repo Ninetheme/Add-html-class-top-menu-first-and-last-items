@@ -1,0 +1,12 @@
+
+// post pagination next class
+function cursornt_posts_next_pag_attrs() {
+    return 'class="c-pagination-1-link -next"';
+}
+add_filter('next_posts_link_attributes', 'cursornt_posts_next_pag_attrs');
+
+// post pagination prev class
+function cursornt_posts_prev_pag_attrs() {
+    return 'class="c-pagination-1-link -previous"';
+}
+add_filter('previous_posts_link_attributes', 'cursornt_posts_prev_pag_attrs');
