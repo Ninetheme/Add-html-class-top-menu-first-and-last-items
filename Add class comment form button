@@ -1,0 +1,6 @@
+// Add class comment form button
+function cursornt_addclass_form_button( $arg ) {
+    $arg['class_submit'] = 'c-button-1 -color-green-outline -hover-green-default -size-small -corner-circle';
+    return $arg;
+}
+add_filter( 'comment_form_defaults', 'cursornt_addclass_form_button' );
