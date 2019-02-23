@@ -1,0 +1,6 @@
+// Replace comment reply button classes
+function cursornt_replace_reply_link_class($class){
+    $class = str_replace("class='c-comments-1-reply", "class='reply xxx", $class);
+    return $class;
+}
+add_filter('comment_reply_link', 'cursornt_replace_reply_link_class');
