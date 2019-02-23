@@ -1,0 +1,24 @@
+// Add placeholder for Name and Email
+function cursornt_move_modify_comment_form_fields($fields){
+
+	$commenter     = wp_get_current_commenter();
+	$user          = wp_get_current_user();
+	$user_identity = $user->exists() ? $user->display_name : '';
+	$req           = get_option( 'require_name_email' );
+	$aria_req      = ( $req ? " aria-required='true'" : '' );
+	$html_req      = ( $req ? " required='required'" : '' );
+	$html5         = current_theme_supports( 'html5', 'comment-form' ) ? 'html5' : false;
+
+  $fields['author'] = '<div class="row"><div class="col-sm-4">' . '<input class="c-form-input" id="author" placeholder="'.esc_attr__( 'Your Name (No Keywords)', 'cursornt' ).'" name="author" type="text" value="' .
+          esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' required />'.
+          '</div>';
+  $fields['email'] = '<div class="col-sm-4">' . '<input class="c-form-input" id="email" placeholder="'.esc_attr__( 'your-real-email@example.com', 'cursornt' ).'" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) .
+          '" size="30"' . $aria_req . ' required/>'  .
+          '</div>';
+  $fields['url'] = '<div class="col-sm-4">' .
+         	'<input class="c-form-input" id="url" name="url" placeholder="'.esc_attr__( 'Add your website domain', 'cursornt' ).'" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" required/> ' .
+         	'</div></div>';
+
+  return $fields;
+}
+add_filter('comment_form_default_fields','cursornt_move_modify_comment_form_fields');
