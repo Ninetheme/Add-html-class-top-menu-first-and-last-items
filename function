@@ -1,0 +1,15 @@
+
+// Add classes WordPress  first and last menu items
+add_filter( 'wp_nav_menu_objects', 'ninetheme_first_last_class_to_top_level_menu' );
+
+function ninetheme_first_last_class_to_top_level_menu( $objects ) {
+    // add 'first' class to first element of menu items array
+    $objects[1]->classes[] = 'first-menu-item';
+
+    // find array index of the last element of top level menu
+    foreach($objects as $i=>$item) if($item->menu_item_parent==0) $last_top_level_menu_index = $i;
+
+    // add 'last' class to the last element of top level menu
+    $objects[$last_top_level_menu_index]->classes[] = 'last-menu-item';
+    return $objects;
+}
