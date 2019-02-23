@@ -1,0 +1,7 @@
+
+// Change excerpt paragraph end
+function cursornt_custom_excerpt_more($more) {
+   global $post;
+   return ' ...';
+}
+add_filter('excerpt_more', 'cursornt_custom_excerpt_more');
